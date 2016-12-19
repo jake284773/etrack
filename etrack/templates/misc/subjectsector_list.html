@@ -1,0 +1,32 @@
+{% extends "base_1col.html" %}
+{% block title %}Subject sectors list{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for subject_sector in subject_sectors %}
+            <tr>
+                <td><a href="{% url "misc:subject-sector:detail" subject_sector.pk %}">{{ subject_sector.number }}</a>
+                </td>
+                <td>{{ subject_sector.name }}</td>
+                <td>
+                    <a href="{% url "misc:subject-sector:update" subject_sector.pk %}">Edit</a>
+                    &bull;
+                    <a href="{% url "misc:subject-sector:delete" subject_sector.pk %}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <a href="{% url "misc:subject-sector:create" %}">New subject sector</a>
+{% endblock %}

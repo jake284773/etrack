@@ -1,0 +1,12 @@
+{% extends "base_1col.html" %}
+{% load bootstrap3 %}
+{% block title %}Update subject sector: {{ subjectsector.name }}{% endblock %}
+{% block content %}
+    <form action="{% url 'misc:subject-sector:update' subjectsector.pk %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input type="submit" class="btn btn-primary" value="Save changes">
+        {% endbuttons %}
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base_1col.html" %}
+{% block title %}{{ subjectsector.name }}{% endblock %}
+{% block content %}
+    <a href="{% url "misc:subject-sector:update" subjectsector.pk %}">Edit</a>
+    &bullet;
+    <a href="{% url "misc:subject-sector:delete" subjectsector.pk %}">Delete</a>
+    <hr>
+    <a href="{% url "misc:subject-sector:list" %}">Back to subject sector list</a>
+{% endblock %}

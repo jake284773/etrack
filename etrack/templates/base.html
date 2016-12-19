@@ -1,0 +1,57 @@
+{% load staticfiles %}<!DOCTYPE html>
+<!--[if lte IE 7]><html class="no-js lte-ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en-gb"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} | eTrack</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+    <script>(function (d) {
+        d.className = d.className.replace(/^no-js\b/, 'js');
+    }(document.documentElement));</script>
+</head>
+<body>
+<header class="
+        navbar
+        navbar-default
+        {% if environment_style %}environment-indicator{% endif %}
+        add-bottom-margin" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-toggle" data-toggle="collapse" data-target="header .navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a href="/" class="navbar-brand">eTrack</a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                {% block navbar_left %}{% endblock %}
+            </ul>
+
+            <div class="navbar-text pull-right">
+                Not signed in
+            </div>
+        </nav>
+    </div>
+</header>
+<section class="container">
+    <main role="main">
+        {% block main %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <span class="pull-left">&copy; Copyright 2016 Jake Moreman &mdash; All Rights Reserved</span>
+        <span class="pull-right">Version: {{ app_version }}</span>
+    </footer>
+</section>
+
+<script src="{% static "components/jquery/dist/jquery.js" %}"></script>
+<script src="{% static "components/bootstrap-sass/assets/javascripts/bootstrap.js" %}"></script>
+</body>
+</html>

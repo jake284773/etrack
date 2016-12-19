@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+*.db
+*.sqlite
+*.sqlite3
+.sass-cache/
+.coverage
+.tox
+node_modules/
+etrack/assets/components
+etrack/static/css
