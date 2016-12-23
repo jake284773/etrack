@@ -2,7 +2,13 @@ from django.test import RequestFactory
 from django.test import TestCase
 from django.urls import reverse
 
-from misc.models import SubjectSector
+from misc.models import SubjectSector, Faculty
+
+
+class ResponseTestCase(TestCase):
+    def assertResponseOkay(self, url):
+        response = self.client.get(reverse(url))
+        self.assertEquals(response.status_code, 200)
 
 
 class SubjectSectorModel(TestCase):
@@ -11,29 +17,26 @@ class SubjectSectorModel(TestCase):
         self.assertEquals(str(subject_sector), "Test One Fifty Zero Sector (150)")
 
 
-class SubjectSectorViewsTest(TestCase):
+class SubjectSectorViewsTest(ResponseTestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
-    def test_list_okay(self):
-        response = self.client.get(reverse('misc:subject-sector:list'))
-        self.assertEquals(response.status_code, 200)
+    def testListOkay(self):
+        self.assertResponseOkay('misc:subject-sector:list')
 
-    def test_create_okay(self):
-        response = self.client.get(reverse('misc:subject-sector:create'))
-        self.assertEquals(response.status_code, 200)
-
-    def test_list_contains_one_sector(self):
+    def testListContainsOneSector(self):
         subject_sector = SubjectSector(number=100, name='Test Sector')
         subject_sector.save()
 
         response = self.client.get(reverse('misc:subject-sector:list'))
-        self.assertEquals(response.status_code, 200)
         self.assertContains(response, 'Test Sector')
         self.assertContains(response, '100')
 
-    def test_create_submit(self):
-        self.test_create_okay()
+    def testCreateOkay(self):
+        self.assertResponseOkay('misc:subject-sector:create')
+
+    def testCreateSubmit(self):
+        self.testCreateOkay()
         response = self.client.post(reverse('misc:subject-sector:create'), {'number': 100, 'name': 'Test Sector'},
                                     follow=True)
         created_subject_sector = SubjectSector.objects.get(number=100)
@@ -41,7 +44,7 @@ class SubjectSectorViewsTest(TestCase):
         self.assertRedirects(response, new_subject_sector_url)
         self.assertContains(response, 'Test Sector')
 
-    def test_update(self):
+    def testUpdate(self):
         new_name = "Test Sector Two"
 
         subject_sector = SubjectSector(number=101, name='Test Sector One')
@@ -51,7 +54,7 @@ class SubjectSectorViewsTest(TestCase):
         self.assertRedirects(update_response, reverse('misc:subject-sector:detail', kwargs={'pk': subject_sector.pk}))
         self.assertContains(update_response, new_name)
 
-    def test_delete(self):
+    def testDelete(self):
         sector_name = 'Test Sector Two'
         subject_sector = SubjectSector(number=102, name=sector_name)
         subject_sector.save()
@@ -61,3 +64,19 @@ class SubjectSectorViewsTest(TestCase):
                                            follow=True)
         self.assertRedirects(delete_response, reverse('misc:subject-sector:list'))
         self.assertNotContains(delete_response, sector_name)
+
+
+class FacultyViewsTests(ResponseTestCase):
+    def testListOkay(self):
+        self.assertResponseOkay('misc:faculty:list')
+
+    def testListOneFaculty(self):
+        faculty = Faculty(code='CCDI', name='Creative Cultural and Digital Industries')
+        faculty.save()
+
+        response = self.client.get(reverse('misc:faculty:list'))
+        # self.assertContains(response, '<td>CCDI</td>\n<td>Creative Cultural and Digital Industries</td>', html=True)
+        self.assertContains(response, "Creative Cultural and Digital Industries")
+
+    def testCreateOkay(self):
+        self.assertResponseOkay('misc:faculty:create')

@@ -1,0 +1,12 @@
+{% extends "base_1col.html" %}
+{% load bootstrap3 %}
+{% block title %}New faculty{% endblock %}
+{% block content %}
+    <form action="{% url 'misc:faculty:create' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input type="submit" class="btn btn-primary" value="Create">
+        {% endbuttons %}
+    </form>
+{% endblock %}

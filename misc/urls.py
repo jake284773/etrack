@@ -13,11 +13,11 @@ subjectsector_patterns = ([
 ], 'subject-sector')
 
 faculty_patterns = ([
-    url(r'^create$', views.SubjectSectorCreate.as_view(), name='create'),
-    url(r'^(?P<pk>[0-9]+)/$', views.SubjectSectorDetail.as_view(), name='detail'),
-    url(r'^(?P<pk>[0-9]+)/update$', views.SubjectSectorUpdate.as_view(), name='update'),
-    url(r'^(?P<pk>[0-9]+)/delete', views.SubjectSectorDelete.as_view(), name='delete'),
-    url(r'^$', views.SubjectSectorList.as_view(), name='list'),
+    url(r'^create$', views.FacultyCreate.as_view(), name='create'),
+    url(r'^(?P<pk>[0-9]+)/$', views.FacultyDetail.as_view(), name='detail'),
+    url(r'^(?P<pk>[0-9]+)/update$', views.FacultyUpdate.as_view(), name='update'),
+    url(r'^(?P<pk>[0-9]+)/delete', views.FacultyDelete.as_view(), name='delete'),
+    url(r'^$', views.FacultyList.as_view(), name='list'),
 ], 'faculty')
 
 urlpatterns = [

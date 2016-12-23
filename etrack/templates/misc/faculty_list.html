@@ -1,0 +1,32 @@
+{% extends "base_1col.html" %}
+{% block title %}Faculties list{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for faculty in faculties %}
+            <tr>
+                <td><a href="{% url "misc:faculty:detail" faculty.pk %}">{{ faculty.code }}</a>
+                </td>
+                <td>{{ faculty.name }}</td>
+                <td>
+                    <a href="{% url "misc:faculty:update" faculty.pk %}">Edit</a>
+                    &bull;
+                    <a href="{% url "misc:faculty:delete" faculty.pk %}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <a href="{% url "misc:faculty:create" %}">New faculty</a>
+{% endblock %}
