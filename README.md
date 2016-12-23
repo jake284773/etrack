@@ -1,4 +1,4 @@
-# eTrack
+# eTrack [![Build Status](https://travis-ci.org/jmoreman/etrack.svg?branch=master)](https://travis-ci.org/jmoreman/etrack)
 
 eTrack is a web application for tracking the academic progress of students who
 are studying BTEC and Cambridge Technical qualifications.
