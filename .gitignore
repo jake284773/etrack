@@ -9,3 +9,4 @@ __pycache__
 node_modules/
 etrack/assets/components
 etrack/static/css
+etrack/secrets.txt

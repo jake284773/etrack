@@ -1,5 +1,7 @@
 from .common import *
 
+SECRET_KEY = "DEVELOPMENT_DO_NOT_USE_IN_PRODUCTION"
+
 DEBUG = True
 
 DATABASES = {
