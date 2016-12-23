@@ -31,11 +31,16 @@ class Qualification(models.Model):
     total_credits = models.IntegerField(validators=['validate_total_credits'])
     mandatory_credits = models.IntegerField()
     optional_credits = models.IntegerField()
-    units = models.ManyToManyField('Unit', through='QualificationUnit', limit_choices_to={'subject_sector': subject_sector})
+    units = models.ManyToManyField('Unit', through='QualificationUnit',
+                                   limit_choices_to={
+                                       'subject_sector': subject_sector})
 
     def validate_total_credits(self):
-        if (self.mandatory_credits + self.optional_credits) != self.total_credits:
-            raise ValidationError("Total credits must add up to mandatory and optional credits")
+        actual_total_credits = self.mandatory_credits + self.optional_credits
+        if actual_total_credits != self.total_credits:
+            raise ValidationError(
+                "Total credits must add up to mandatory and optional credits"
+            )
 
     def __str__(self):
         return self.name + " (" + self.pathway + ")"
