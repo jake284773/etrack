@@ -44,11 +44,16 @@ class FacultyCreate(CreateView):
 class FacultyUpdate(UpdateView):
     model = Faculty
     fields = ['code', 'name']
+    context_object_name = 'faculty'
+    template_name_suffix = '_update_form'
 
 
 class FacultyDetail(DetailView):
     model = Faculty
+    context_object_name = 'faculty'
 
 
 class FacultyDelete(DeleteView):
     model = Faculty
+    context_object_name = 'faculty'
+    success_url = reverse_lazy('misc:faculty:list')

@@ -1,0 +1,15 @@
+{% extends "base_1col.html" %}
+{% load bootstrap3 %}
+{% block title %}Deleting faculty: {{ faculty }}{% endblock %}
+{% block content %}
+    <form action="{% url "misc:faculty:delete" faculty.pk %}" method="post">
+        {% csrf_token %}
+        <p class="lead text-danger text-bold">Are you sure you want to delete
+            {{ faculty }}?</p>
+        {% buttons %}
+            <input type="submit" value="Yes" class="btn btn-danger">
+            <a href="{% url "misc:faculty:detail" faculty.pk %}" 
+               class="btn btn-default">No</a>
+        {% endbuttons %}
+    </form>
+{% endblock %}

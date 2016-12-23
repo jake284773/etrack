@@ -1,0 +1,9 @@
+{% extends "base_1col.html" %}
+{% block title %}{{ faculty }}{% endblock %}
+{% block content %}
+    <a href="{% url "misc:faculty:update" faculty.pk %}">Edit</a>
+    &bullet;
+    <a href="{% url "misc:faculty:delete" faculty.pk %}">Delete</a>
+    <hr>
+    <a href="{% url "misc:faculty:list" %}">Back to faulty list</a>
+{% endblock %}
