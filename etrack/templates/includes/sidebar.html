@@ -1,0 +1,32 @@
+<div class="navwell">
+    <ul class="nav nav-list">
+        <li><a href="#">My Dashboard</a></li>
+
+        <li class="divider"></li>
+
+        <li class="nav-header"><span class="glyphicon glyphicon-pencil"></span>
+            Assessment Tools
+        </li>
+
+        <li><a href="#">View my active assignments</a></li>
+
+        <li class="divider"></li>
+
+        <li class="nav-header"><span
+                class="glyphicon glyphicon-education"></span> Course Admin Tools
+        </li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="{% url 'qualification:list' %}">Qualifications</a></li>
+        <li><a href="#">Units</a></li>
+
+        <li class="divider"></li>
+
+        <li class="nav-header"><span class="glyphicon glyphicon-wrench"></span>
+            Misc. Admin Tools
+        </li>
+        <li><a href="{% url 'misc:faculty:list' %}">Manage Faculties</a></li>
+        <li><a href="{% url 'misc:subject-sector:list' %}">Manage Subject
+            sectors</a></li>
+        <li><a href="#">Manage User Accounts</a></li>
+    </ul>
+</div>

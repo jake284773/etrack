@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block main %}
     <div class="row">
-        <div class="col-md-12"><h1 class="page-header">{% block title %}{% endblock %}</h1></div>
+        <div class="col-md-12">
+            <ol class="breadcrumb">{% block breadcrumb %}{% endblock %}</ol>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8">{% block content %}{% endblock %}</div>
+        <div class="col-md-3">
+            {% include 'includes/sidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <h1 class="page-header">{% block title %}{% endblock %}</h1>
+            {% block content %}{% endblock %}
+        </div>
     </div>
 {% endblock %}
