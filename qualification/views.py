@@ -2,8 +2,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
-from qualification.forms import QualificationForm
-from qualification.models import Qualification, Pathway
+from qualification.forms import QualificationForm, UnitForm
+from qualification.models import Qualification, Pathway, Unit
 
 
 class QualificationList(ListView):
@@ -42,3 +42,18 @@ class PathwayCreate(CreateView):
         context['qualification'] = Qualification.objects.get(
             id=self.kwargs['qualification_id'])
         return context
+
+
+class UnitList(ListView):
+    model = Unit
+    context_object_name = 'units'
+
+
+class UnitDetail(DetailView):
+    model = Unit
+    context_object_name = 'unit'
+
+
+class UnitCreate(CreateView):
+    model = Unit
+    form_class = UnitForm

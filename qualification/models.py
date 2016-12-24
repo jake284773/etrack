@@ -76,9 +76,15 @@ class Unit(models.Model):
     number = models.IntegerField()
     name = models.CharField(max_length=50)
     credits = models.IntegerField()
-    glh = models.IntegerField()
-    level = models.IntegerField()
+    glh = models.IntegerField(verbose_name='guided learning hours')
+    level = models.IntegerField(default=3, choices=Qualification.LEVELS)
     subject_sector = models.ForeignKey(SubjectSector)
+
+    def get_absolute_url(self):
+        return reverse('qualification:unit:detail', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return 'Unit ' + str(self.number) + ' - ' + self.name
 
 
 class Criteria(models.Model):

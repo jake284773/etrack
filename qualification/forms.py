@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django.forms.widgets import RadioSelect
 
-from qualification.models import Qualification
+from qualification.models import Qualification, Unit
 
 
 class QualificationForm(ModelForm):
@@ -11,4 +11,14 @@ class QualificationForm(ModelForm):
         widgets = {
             'level': RadioSelect(),
             'framework': RadioSelect(),
+        }
+
+
+class UnitForm(ModelForm):
+    class Meta:
+        model = Unit
+        fields = ['code', 'number', 'name', 'level', 'glh', 'credits',
+                  'subject_sector']
+        widgets = {
+            'level': RadioSelect(),
         }

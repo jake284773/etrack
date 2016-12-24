@@ -10,4 +10,5 @@ node_modules/
 etrack/assets/components
 etrack/static/css
 etrack/static/fonts
+etrack/static/components
 etrack/secrets.txt

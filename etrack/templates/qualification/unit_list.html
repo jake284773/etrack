@@ -1,0 +1,49 @@
+{% extends "base_1col.html" %}
+{% block breadcrumb %}
+    <li class="active">Units</li>
+{% endblock %}
+{% block title %}Manage Units{% endblock %}
+{% block content %}
+    {% if not units %}
+        <p class="lead">No units could be found. Please create one.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th>GLH</th>
+            <th>Credits</th>
+            <th>Subject Sector</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for unit in units %}
+            <tr>
+                <td><a href="{% url "qualification:unit:detail" unit.pk %}">{{ unit.code }}</a>
+                </td>
+                <td>{{ unit.number }}</td>
+                <td>{{ unit.name }}</td>
+                <td>{{ unit.level }}</td>
+                <td>{{ unit.glh }}</td>
+                <td>{{ unit.credits }}</td>
+                <td>{{ unit.subject_sector }}</td>
+
+                <td>
+                    <a href="{# {% url "qualification:unit:update" unit.pk %} #}">Edit</a>
+                    &bull;
+                    <a href="{# {% url "qualification:unit:delete" unit.pk %} #}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <hr>
+
+    <a href="{% url "qualification:unit:create" %}">New unit</a>
+{% endblock %}

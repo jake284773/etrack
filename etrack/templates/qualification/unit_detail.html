@@ -1,0 +1,10 @@
+{% extends "base_1col.html" %}
+{% block breadcrumb %}
+    <li><a href="{% url 'qualification:unit:list' %}">Units</a></li>
+    <li class="active">{{ unit }}</li>
+{% endblock %}
+{% block title %}{{ unit }}{% endblock %}
+{% block content %}
+    <hr>
+    <a href="{% url "qualification:unit:list" %}">Back to unit list</a>
+{% endblock %}

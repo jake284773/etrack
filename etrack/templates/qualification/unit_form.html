@@ -1,0 +1,16 @@
+{% extends "base_1col.html" %}
+{% load bootstrap3 %}
+{% block breadcrumb %}
+    <li><a href="{% url 'qualification:unit:list' %}">Units</a></li>
+    <li class="active">New unit</li>
+{% endblock %}
+{% block title %}New unit{% endblock %}
+{% block content %}
+    <form action="{% url 'qualification:unit:create' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input type="submit" class="btn btn-primary" value="Create">
+        {% endbuttons %}
+    </form>
+{% endblock %}
