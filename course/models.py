@@ -2,20 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from misc.models import SubjectSector, Faculty
-from qualification.models import QualificationUnit, Qualification
+from qualification.models import PathwayUnit, Pathway
 
 
 class Course(models.Model):
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=50)
-    qualification = models.ForeignKey(Qualification)
-    units = models.ManyToManyField(QualificationUnit)
+    pathway = models.ForeignKey(Pathway)
+    units = models.ManyToManyField(PathwayUnit)
     start_date = models.DateField()
     end_date = models.DateField()
     subject_sector = models.ForeignKey(SubjectSector)
     faculty = models.ForeignKey(Faculty)
     course_organiser = models.ForeignKey(User)
-    students = models.ManyToManyField(User, through='CourseStudent', related_name='course_students')
+    students = models.ManyToManyField(User, through='CourseStudent',
+                                      related_name='course_students')
 
 
 class CourseStudent(models.Model):

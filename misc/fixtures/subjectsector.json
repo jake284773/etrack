@@ -1,0 +1,154 @@
+[
+{
+  "model": "misc.subjectsector",
+  "pk": 1,
+  "fields": {
+    "number": 15,
+    "name": "Applied Science"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 2,
+  "fields": {
+    "number": 5,
+    "name": "Art and Design"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 3,
+  "fields": {
+    "number": 11,
+    "name": "Beauty Therapy"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 4,
+  "fields": {
+    "number": 3,
+    "name": "Business"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 5,
+  "fields": {
+    "number": 19,
+    "name": "Children's Care, Learning and Development"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 6,
+  "fields": {
+    "number": 20,
+    "name": "Construction and the Built Environment"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 7,
+  "fields": {
+    "number": 13,
+    "name": "Creative Media Production"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 8,
+  "fields": {
+    "number": 12,
+    "name": "Electrical/Electronic Engineering"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 9,
+  "fields": {
+    "number": 2,
+    "name": "Engineering"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 10,
+  "fields": {
+    "number": 14,
+    "name": "Health and Social Care"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 11,
+  "fields": {
+    "number": 7,
+    "name": "Hospitality"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 12,
+  "fields": {
+    "number": 6,
+    "name": "Information Technology"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 13,
+  "fields": {
+    "number": 8,
+    "name": "Music and Music Technology"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 14,
+  "fields": {
+    "number": 4,
+    "name": "Performing Arts"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 15,
+  "fields": {
+    "number": 1,
+    "name": "Public Services"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 16,
+  "fields": {
+    "number": 9,
+    "name": "Sport"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 17,
+  "fields": {
+    "number": 16,
+    "name": "Sport and Exercise Sciences"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 18,
+  "fields": {
+    "number": 17,
+    "name": "Travel and Tourism"
+  }
+},
+{
+  "model": "misc.subjectsector",
+  "pk": 19,
+  "fields": {
+    "number": 18,
+    "name": "Vehicle Technology"
+  }
+}
+]
