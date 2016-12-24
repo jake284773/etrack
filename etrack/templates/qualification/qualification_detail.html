@@ -1,0 +1,53 @@
+{% extends "base_1col.html" %}
+{% block breadcrumb %}
+    <li><a href="{% url 'qualification:list' %}">Qualifications</a></li>
+    <li class="active">{{ qualification }}</li>
+{% endblock %}
+{% block title %}{{ qualification }}{% endblock %}
+{% block content %}
+    {% if not pathways %}
+        <div class="alert alert-warning">
+            <h4><span class="glyphicon glyphicon-alert"
+                      aria-hidden="true"></span>
+                <strong>Important<strong>: No pathways in this qualification</h4>
+
+            <p>Until at least <strong>one</strong> pathway has been created for
+                this qualification, you won't be able to create a course with
+                this
+                qualification.</p>
+        </div>
+    {% endif %}
+
+    <h3>Pathways</h3>
+
+    {% if not pathways %}
+        <p>No pathways for this qualification. Please create one.</p>
+    {% else %}
+        <table class="table">
+            <thead>
+            <th>Pathway name</th>
+            <th>Mandatory credits</th>
+            <th>Optional credits</th>
+            <th>Subject sector</th>
+            </thead>
+
+            <tbody>
+            <tr>
+                {% for pathway in pathways %}
+                    <td>{{ pathway.name }}</td>
+                    <td>{{ pathway.mandatory_credits }}</td>
+                    <td>{{ pathway.optional_credits }}</td>
+                    <td>{{ pathway.subject_sector }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+    <a href="{% url "qualification:pathway:create" qualification.id %}">Create a
+        new pathway</a>
+
+
+    <hr>
+    <a href="{% url "qualification:list" %}">Back to qualification list</a>
+{% endblock %}

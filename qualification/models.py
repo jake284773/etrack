@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from misc.models import SubjectSector
 
@@ -10,8 +11,8 @@ class Qualification(models.Model):
     )
 
     FRAMEWORKS = (
-        ('QCF', 'Qualifications and Credit Framework'),
-        ('NQF', 'National Qualification Framework'),
+        ('QCF', 'QCF (Qualifications and Credit Framework)'),
+        ('NQF', 'NQF (National Qualification Framework)'),
     )
 
     qn = models.CharField(max_length=10, verbose_name='qualification number',
@@ -19,20 +20,33 @@ class Qualification(models.Model):
     name = models.CharField(max_length=50)
     level = models.IntegerField(choices=LEVELS, default=3)
     glh = models.IntegerField(verbose_name='guided learning hours')
-    framework = models.CharField(max_length=3, choices=FRAMEWORKS)
+    framework = models.CharField(max_length=3, choices=FRAMEWORKS,
+                                 default='QCF')
     total_credits = models.IntegerField()
 
     def __str__(self):
         return self.name + ' (' + self.qn + ')'
 
+    def get_absolute_url(self):
+        return reverse('qualification:detail', kwargs={'pk': self.pk})
+
 
 class Pathway(models.Model):
     qualification = models.ForeignKey('Qualification')
-    pathway = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50, default='N/A',
+                            help_text="If the qualification has only one "
+                                      "unnamed pathway, leave this field "
+                                      "as N/A.")
     subject_sector = models.ForeignKey(SubjectSector)
     units = models.ManyToManyField('Unit', through='PathwayUnit')
     mandatory_credits = models.IntegerField()
     optional_credits = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse('qualification:pathway:detail',
+                       kwargs={'qualification_id':
+                                   self.kwargs['qualification_id'],
+                               'pk': self.pk})
 
 
 class QualificationGrade(models.Model):

@@ -1,0 +1,45 @@
+{% extends "base_1col.html" %}
+{% block breadcrumb %}
+    <li class="active">Qualifications</li>
+{% endblock %}
+{% block title %}Manage Qualifications{% endblock %}
+{% block content %}
+    {% if not qualifications %}
+        <p class="lead">No qualifications could be found.</p>
+    {% else %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>QN</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th>GLH</th>
+            <th>Total Credits</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for qualification in qualifications %}
+            <tr>
+                <td><a href="{% url "qualification:detail" qualification.pk %}">{{ qualification.qn }}</a>
+                </td>
+                <td>{{ qualification.name }}</td>
+                <td>{{ qualification.level }}</td>
+                <td>{{ qualification.glh }}</td>
+                <td>{{ qualification.total_credits }}</td>
+
+                <td>
+                    <a href="{# {% url "qualification:update" qualification.pk %} #}">Edit</a>
+                    &bull;
+                    <a href="{# {% url "qualification:delete" qualification.pk %} #}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <hr>
+
+    <a href="{% url "qualification:create" %}">New qualification</a>
+{% endblock %}
